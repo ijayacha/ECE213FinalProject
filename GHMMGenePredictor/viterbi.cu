@@ -697,21 +697,6 @@ int paths_match(const int* a, const int* b, int T) {
     return 1;
 }
 
-static const char* state_name(int s) {
-    switch (s) {
-        case ST_INTERGENIC: return "Intergenic   ";
-        case ST_START:      return "Start Codon  ";
-        case ST_EXON_0:     return "Exon_0 (f=0) ";
-        case ST_EXON_1:     return "Exon_1 (f=1) ";
-        case ST_EXON_2:     return "Exon_2 (f=2) ";
-        case ST_DONOR:      return "Splice Donor ";
-        case ST_INTRON:     return "Intron       ";
-        case ST_ACCEPTOR:   return "Splice Accptr";
-        case ST_STOP:       return "Stop Codon   ";
-        default:            return "Unknown      ";
-    }
-}
-
 
 static void print_usage(const char* prog) {
     fprintf(stderr,
