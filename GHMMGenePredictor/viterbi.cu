@@ -712,18 +712,6 @@ static const char* state_name(int s) {
     }
 }
 
-static void print_path_summary(const int* path, int T) {
-    printf("\n  Decoded gene structure (run-length):\n");
-    printf("  %-7s  %-15s  %-10s\n", "Start", "State", "Length");
-    printf("  %-7s  %-15s  %-10s\n", "-------", "---------------", "----------");
-    int i = 0;
-    while (i < T) {
-        int j = i + 1;
-        while (j < T && path[j] == path[i]) j++;
-        printf("  %-7d  %-15s  %d\n", i, state_name(path[i]), j - i);
-        i = j;
-    }
-}
 
 static void print_usage(const char* prog) {
     fprintf(stderr,

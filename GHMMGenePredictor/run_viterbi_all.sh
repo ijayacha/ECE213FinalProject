@@ -32,7 +32,7 @@
 set -euo pipefail
 
 # Compile
-nvcc -O3 -arch=sm_80 viterbi_test.cu -o viterbi_test -lm
+nvcc -O3 -arch=sm_80 viterbi.cu -o viterbi -lm
 
 # ── Defaults ──────────────────────────────────────────────────────────────────
 FASTA="Test_Sequence.fa"

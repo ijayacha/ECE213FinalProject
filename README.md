@@ -72,16 +72,13 @@ A test dataset from **hg38 chromosome 22** (1145 transcripts, ~21M nucleotides) 
 
 ```bash
 # Validate splice sites and codon sequences, print state distribution
-python3 extract_all_labels.py Test_Sequence.fa Test_Sequence_Labelled.gtf \
-        -o labels/ --validate --summary
+python3 extract_all_labels.py Test_Sequence.fa Test_Sequence_Labelled.gtf -o labels/ --validate --summary
 
 # Process specific transcripts only
-python3 extract_all_labels.py Test_Sequence.fa Test_Sequence_Labelled.gtf \
-        -o labels/ -t ENST00000852538.1,ENST00000263207.8
+python3 extract_all_labels.py Test_Sequence.fa Test_Sequence_Labelled.gtf -o labels/ -t ENST00000852538.1,ENST00000263207.8
 
 # Parallel extraction (e.g. 8 cores)
-python3 extract_all_labels.py Test_Sequence.fa Test_Sequence_Labelled.gtf \
-        -o labels/ -j 8
+python3 extract_all_labels.py Test_Sequence.fa Test_Sequence_Labelled.gtf -o labels/ -j 8
 ```
 
 This produces:
@@ -93,9 +90,7 @@ This produces:
 #### On DSMLP (recommended)
 
 ```bash
-/opt/launch-sh/bin/launch.sh -v a30 -c 8 -g 1 -m 8 \
-    -i yatisht/ece213-wi26:latest \
-    -f ./genscan/run_viterbi_all.sh
+/opt/launch-sh/bin/launch.sh -v a30 -c 8 -g 1 -m 8 -i yatisht/ece213-wi26:latest -f ./ECE213FinalProject/GHMMGenePredictor/run_viterbi_all.sh
 ```
 
 This submits a job to the cluster, runs the decoder across all 1145 transcripts, and reports per-base accuracy against the GTF ground truth.
