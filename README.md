@@ -93,7 +93,7 @@ This produces:
 /opt/launch-sh/bin/launch.sh -v a30 -c 8 -g 1 -m 8 -i yatisht/ece213-wi26:latest -f ./ECE213FinalProject/GHMMGenePredictor/run_viterbi_all.sh
 ```
 
-This submits a job to the cluster, runs the decoder across all 1145 transcripts, and reports per-base accuracy against the GTF ground truth.
+This submits a job to the cluster, runs the decoder across all 1145 transcripts, and reports per-base accuracy against the GTF ground truth. MAKE SURE TO UPDATE THE WORKING DIRECTORY IN run_viterbi_all.sh as needed. And if needed run ```chmod +x run_viterbi_all.sh``` 
 
 #### Locally
 

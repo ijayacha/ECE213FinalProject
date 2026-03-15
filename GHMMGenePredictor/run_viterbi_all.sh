@@ -31,6 +31,8 @@
 
 set -euo pipefail
 
+cd /home/ijayacha/ECE213FinalProject/GHMMGenePredictor   # make sure we're in the right directory, update path to your working directory
+
 # Compile
 nvcc -O3 -arch=sm_80 viterbi.cu -o viterbi -lm
 
