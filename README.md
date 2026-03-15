@@ -29,7 +29,7 @@ The GPU parallelises across states at each timestep using shared memory, with a 
 ## Repository Structure
 
 ```
-.all transcripts
+.
 ├── GHMMGenePredictor/
     └── viterbi.cu                 # GPU + CPU Viterbi decoder (CUDA)
     └── extract_all_labels.py      # Data Preprocessing script
@@ -48,9 +48,9 @@ The GPU parallelises across states at each timestep using shared memory, with a 
 
 ---
 
-## Quick Start
+## Quick Start (Skip to step 3)
 
-### 1. Compile
+### 1. Compile 
 
 ```bash
 nvcc -O3 -arch=sm_75 viterbi.cu -o viterbi -lm
@@ -89,22 +89,20 @@ This produces:
 
 #### On DSMLP (recommended)
 
+To check the accuracy of the tool against a baseline sequence from hg38 chr22 run:
+
 ```bash
 /opt/launch-sh/bin/launch.sh -v a30 -c 8 -g 1 -m 8 -i yatisht/ece213-wi26:latest -f ./ECE213FinalProject/GHMMGenePredictor/run_viterbi_all.sh
 ```
 
 This submits a job to the cluster, runs the decoder across all 1145 transcripts, and reports per-base accuracy against the GTF ground truth. MAKE SURE TO UPDATE THE WORKING DIRECTORY IN run_viterbi_all.sh as needed. And if needed run ```chmod +x run_viterbi_all.sh``` 
 
-#### Locally
-
+For benchmarking run:
 ```bash
-chmod +x run_viterbi_all.sh
-./run_viterbi_all.sh \
-    -f Test_Sequence.fa \
-    -m labels/manifest.tsv \
-    -v ./viterbi \
-    -o viterbi_output/
+/opt/launch-sh/bin/launch.sh -v a30 -c 8 -g 1 -m 8 -i yatisht/ece213-wi26:latest -f ./ECE213FinalProject/GHMMGenePredictor/run_benchmark.sh
 ```
+
+This runs the software on randomly generated sequences with lengths 10000 50000 100000 500000 1000000.
 
 ### 4. Single-transcript run
 
